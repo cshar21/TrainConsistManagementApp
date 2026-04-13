@@ -209,6 +209,25 @@ import java.util.stream.Collectors;public class TrainConsistManagementApp{
         for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
             System.out.println(entry.getKey() + " -> " + entry.getValue());
         }
+// UC10
+        System.out.println("\n--- UC10: Count Total Seats in Train (reduce) ---");
 
+// Reuse Bogie list
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 54));
+        bogies.add(new Bogie("First Class", 24));
+        bogies.add(new Bogie("Luxury", 80));
+
+        System.out.println("Bogie List:");
+        System.out.println(bogies);
+
+// Stream reduce operation
+        int totalSeats = bogies.stream()
+                .map(b -> b.capacity)
+                .reduce(0, Integer::sum);
+
+// Display result
+        System.out.println("\nTotal Seating Capacity of Train:");
+        System.out.println(totalSeats);
         System.out.println("Program continues...");    }
 }
