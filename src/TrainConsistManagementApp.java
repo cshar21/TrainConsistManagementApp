@@ -6,9 +6,24 @@ import java.util.Set;
 import java.util.LinkedHashSet;
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.Comparator;
 public class TrainConsistManagementApp{
+    // Bogie class (custom object)
+    static class Bogie {
+        String name;
+        int capacity;
 
+        // Constructor
+        Bogie(String name, int capacity) {
+            this.name = name;
+            this.capacity = capacity;
+        }
+
+        // toString() for printing
+        public String toString() {
+            return name + " (" + capacity + ")";
+        }
+    }
     public static void main(String[] args) {
 
         // UC1
@@ -129,6 +144,27 @@ public class TrainConsistManagementApp{
         for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
             System.out.println(entry.getKey() + " -> " + entry.getValue());
         }
+
+        System.out.println("\n--- UC7: Sort Bogies by Capacity ---");
+
+        // Create list of bogies
+        List<Bogie> bogies = new ArrayList<>();
+
+        // Add bogies
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 54));
+        bogies.add(new Bogie("First Class", 24));
+
+        // Before sorting
+        System.out.println("Before Sorting:");
+        System.out.println(bogies);
+
+        // Sort using Comparator (by capacity)
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
+
+        // After sorting
+        System.out.println("After Sorting (Ascending by Capacity):");
+        System.out.println(bogies);
 
         System.out.println("Program continues...");    }
 }
