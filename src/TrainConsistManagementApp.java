@@ -189,6 +189,26 @@ import java.util.stream.Collectors;public class TrainConsistManagementApp{
 // Ensure original list unchanged
         System.out.println("\nOriginal List After Filtering (unchanged):");
         System.out.println(bogies);
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 54));
+        bogies.add(new Bogie("First Class", 24));
+        bogies.add(new Bogie("Sleeper", 80)); // duplicate type (for grouping demo)
+        bogies.add(new Bogie("AC Chair", 60));
+
+        System.out.println("Original Bogie List:");
+        System.out.println(bogies);
+
+// Grouping using Stream API
+        Map<String, List<Bogie>> groupedBogies =
+                bogies.stream()
+                        .collect(Collectors.groupingBy(b -> b.name));
+
+// Display grouped result
+        System.out.println("\nGrouped Bogies by Type:");
+
+        for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
 
         System.out.println("Program continues...");    }
 }
