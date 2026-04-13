@@ -1,20 +1,45 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class PalindromeCheckerApp {
+public class TrainConsistManagementApp{
 
     public static void main(String[] args) {
 
-        // Welcome message
+        // UC1
         System.out.println("=== Train Consist Management App ===");
 
-        // Initialize train consist (empty list)
         List<String> trainConsist = new ArrayList<>();
-
-        // Display initial bogie count
         System.out.println("Initial bogie count: " + trainConsist.size());
 
-        // Program continues...
-        System.out.println("Train initialized successfully.");
+        System.out.println("\n--- UC2: Passenger Bogie Operations ---");
+
+        // UC2: Create passenger bogie list
+        List<String> passengerBogies = new ArrayList<>();
+
+        // ADD bogies
+        passengerBogies.add("Sleeper");
+        passengerBogies.add("AC Chair");
+        passengerBogies.add("First Class");
+
+        // Display after adding
+        System.out.println("Passenger Bogies after adding:");
+        System.out.println(passengerBogies);
+
+        // REMOVE a bogie
+        passengerBogies.remove("AC Chair");
+
+        System.out.println("After removing AC Chair:");
+        System.out.println(passengerBogies);
+
+        // CHECK existence
+        boolean exists = passengerBogies.contains("Sleeper");
+
+        System.out.println("Does Sleeper exist? " + exists);
+
+        // Final state
+        System.out.println("Final Passenger Bogies:");
+        System.out.println(passengerBogies);
+
+        System.out.println("Program continues...");
     }
 }
