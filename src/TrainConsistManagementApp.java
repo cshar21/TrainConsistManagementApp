@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Comparator;
-public class TrainConsistManagementApp{
+import java.util.stream.Collectors;public class TrainConsistManagementApp{
     // Bogie class (custom object)
     static class Bogie {
         String name;
@@ -164,6 +164,30 @@ public class TrainConsistManagementApp{
 
         // After sorting
         System.out.println("After Sorting (Ascending by Capacity):");
+        System.out.println(bogies);
+// UC8
+        System.out.println("\n--- UC8: Filter Passenger Bogies Using Streams ---");
+
+// Reuse UC7 list (or create again if needed)
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 54));
+        bogies.add(new Bogie("First Class", 24));
+        bogies.add(new Bogie("Luxury", 80)); // extra for testing
+
+        System.out.println("Original Bogie List:");
+        System.out.println(bogies);
+
+// Stream filtering
+        List<Bogie> filteredBogies = bogies.stream()
+                .filter(b -> b.capacity > 60)
+                .collect(Collectors.toList());
+
+// Display filtered result
+        System.out.println("\nFiltered Bogies (capacity > 60):");
+        System.out.println(filteredBogies);
+
+// Ensure original list unchanged
+        System.out.println("\nOriginal List After Filtering (unchanged):");
         System.out.println(bogies);
 
         System.out.println("Program continues...");    }
